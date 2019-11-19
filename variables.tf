@@ -14,6 +14,15 @@ variable "prefix" {
   description = "A prefix for your TFE instances. Can only be a maximum of 6 characters"
 }
 
+variable "license_file" {
+  description = "license file name"
+}
+
+variable "allow_list" {
+  description = "The cidr from where you can use ssh."
+  default = []
+}
+
 variable "vpc_cidr_block" {
   description = "The top-level CIDR block for the VPC."
   default     = "10.1.0.0/16"

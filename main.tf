@@ -6,8 +6,8 @@
 #   version      = "0.1.1"
 #   vpc_id       = "${aws_vpc.demo-tfe.id}"
 #   domain       = "${var.domain}"
-#   license_file = "hashicorp-internal---se.rli"
-#   allow_list   = ["88.97.2.109/32"]
+#   license_file = "${var.license_file}"
+#   allow_list   = "${var.allow_list}"
 #   hostname     = "${var.hostname}"
 #   prefix       = "${var.prefix}"
 # }
