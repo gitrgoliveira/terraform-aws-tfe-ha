@@ -20,7 +20,7 @@ variable "license_file" {
 
 variable "allow_list" {
   description = "The cidr from where you can use ssh."
-  default = []
+  default     = []
 }
 
 variable "vpc_cidr_block" {

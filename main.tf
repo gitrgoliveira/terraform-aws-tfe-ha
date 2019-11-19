@@ -11,7 +11,6 @@
 #   hostname     = "${var.hostname}"
 #   prefix       = "${var.prefix}"
 # }
-
 # output "tfe-beta" {
 #   value = {
 #     application_endpoint         = "${module.tfe-cluster.application_endpoint}"
@@ -24,3 +23,4 @@
 #     ssh_private_key              = "${module.tfe-cluster.ssh_private_key}"
 #   }
 # }
+

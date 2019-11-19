@@ -66,3 +66,45 @@ resource "aws_route" "internet_access" {
   destination_cidr_block = "0.0.0.0/0"
   gateway_id             = "${aws_internet_gateway.demo-tfe.id}"
 }
+
+data "aws_route53_zone" "selected" {
+  name = "${var.domain}."
+}
+
+resource "aws_acm_certificate" "cert" {
+  domain_name       = "*.${var.domain}"
+  validation_method = "DNS"
+
+  tags = {
+    Name           = "${var.owner}-tfe"
+    owner          = "${var.owner}"
+    created-by     = "${var.owner}"
+    sleep-at-night = "${var.sleep-at-night}"
+    TTL            = "${var.TTL}"
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_route53_record" "validation_record" {
+  name            = "${aws_acm_certificate.cert.domain_validation_options.0.resource_record_name}"
+  type            = "${aws_acm_certificate.cert.domain_validation_options.0.resource_record_type}"
+  zone_id         = "${data.aws_route53_zone.selected.zone_id}"
+  records         = ["${aws_acm_certificate.cert.domain_validation_options.0.resource_record_value}"]
+  ttl             = "60"
+  allow_overwrite = true
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_acm_certificate_validation" "cert" {
+  certificate_arn = "${aws_acm_certificate.cert.arn}"
+
+  validation_record_fqdns = [
+    "${aws_route53_record.validation_record.fqdn}",
+  ]
+}
