@@ -19,7 +19,7 @@ variable "vpc_cidr_block" {
   default     = "10.1.0.0/16"
 }
 
-variable "cidr_blocks_publ" {
+variable "cidr_blocks_pub" {
   description = "The public CIDR blocks to create the workstations in."
   default     = ["10.1.1.0/24", "10.1.2.0/24", "10.1.3.0/24"]
 }

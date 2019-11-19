@@ -2,14 +2,14 @@
 # To achieve this, comment the below code, apply, uncomment and do it again.
 #
 module "tfe-cluster" {
-  source  = "hashicorp/terraform-enterprise/aws"
-  version = "0.1.1"
+  source       = "hashicorp/terraform-enterprise/aws"
+  version      = "0.1.1"
   vpc_id       = "${aws_vpc.demo-tfe.id}"
   domain       = "${var.domain}"
   license_file = "hashicorp-internal---se.rli"
   allow_list   = ["88.97.2.109/32"]
   hostname     = "${var.hostname}"
-  prefix = "${var.prefix}"
+  prefix       = "${var.prefix}"
 }
 
 output "tfe-beta" {
@@ -24,4 +24,3 @@ output "tfe-beta" {
     ssh_private_key              = "${module.tfe-cluster.ssh_private_key}"
   }
 }
-

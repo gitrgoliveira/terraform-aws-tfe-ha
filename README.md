@@ -1,6 +1,6 @@
 # terraform-aws-tfe-ha
-Quick and simple TFE (terraform enterprise deployment) deployment on AWS
-
+Quick and simple TFE (terraform enterprise deployment) deployment on AWS, for demo purposes only.
+*Please do not use this in Production !!*
 
 ## Deployment instructions
 1. Download and keep the `terraform` v0.11.x binary in this folder. You can run the commands from there to prevent using another version of Terraform.

@@ -17,11 +17,11 @@ resource "aws_vpc" "demo-tfe" {
 
 data "aws_availability_zones" "available" {}
 
-resource "aws_subnet" "demo-tfe" {
-  count                   = "${length(var.cidr_blocks)}"
+resource "aws_subnet" "demo-tfe-pub" {
+  count                   = "${length(var.cidr_blocks_pub)}"
   vpc_id                  = "${aws_vpc.demo-tfe.id}"
   availability_zone       = "${data.aws_availability_zones.available.names[count.index]}"
-  cidr_block              = "${var.cidr_blocks[count.index]}"
+  cidr_block              = "${var.cidr_blocks_pub[count.index]}"
   map_public_ip_on_launch = true
 
   tags = {
