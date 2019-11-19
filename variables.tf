@@ -6,24 +6,27 @@ variable "domain" {
   description = "The domain that has a corresponding wildcard cert in AWS ACM"
 }
 
+variable "owner" {
+  description = "Owner information used in tags"
+}
+
+variable "prefix" {
+  description = "A prefix for your TFE instances. Can only be a maximum of 6 characters"
+}
+
 variable "vpc_cidr_block" {
   description = "The top-level CIDR block for the VPC."
   default     = "10.1.0.0/16"
 }
 
-variable "cidr_blocks" {
-  description = "The CIDR blocks to create the workstations in."
+variable "cidr_blocks_publ" {
+  description = "The public CIDR blocks to create the workstations in."
   default     = ["10.1.1.0/24", "10.1.2.0/24", "10.1.3.0/24"]
 }
 
 variable "cidr_blocks_priv" {
-  description = "The CIDR blocks to create the workstations in."
+  description = "The private CIDR blocks to create the workstations in."
   default     = ["10.1.4.0/24", "10.1.5.0/24", "10.1.6.0/24"]
-}
-
-variable "owner" {
-  description = "Owner information used in tags"
-  default     = "ricardo"
 }
 
 variable "sleep-at-night" {

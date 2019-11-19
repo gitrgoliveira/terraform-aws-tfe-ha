@@ -1,2 +1,5 @@
 .terraform
 *.rli
+
+# The tf binary
+terraform
