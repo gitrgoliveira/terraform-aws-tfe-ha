@@ -4,7 +4,7 @@ Quick and simple TFE (terraform enterprise deployment) deployment on AWS, for de
 *Please do not use this in Production !!*
 
 ## Deployment instructions
-1. Download and keep the `terraform` v0.11.x binary in this folder. You can run the commands from there to prevent using another version of Terraform.
+1. Download and keep the `terraform` v0.11.x binary in this folder, with `get_tf.sh`. You can run the commands from there to prevent using another version of Terraform.
 2. Edit and review the `terraform.tfvars` and `variables.tf` files
 3. **Ensure your configured domain is a zone in AWS Route53.**
 4. run `./terraform apply`
